@@ -1,0 +1,17 @@
+{
+    "data": [
+        {
+            "deptId":1,
+            "deptName":"DEV"
+        },
+        {
+            "deptId":2,
+            "deptName":"QA"
+        },
+        {
+            "deptId":3,
+            "deptName":"HR"
+        }
+
+    ]
+}

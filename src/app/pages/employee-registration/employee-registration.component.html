@@ -1,0 +1,126 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row">
+            <div class="col-12 text-end">
+                <button class="btn btn-sm btn-success" (click)="updateOrAdd()"> {{isListView ? 'Add New':'List'}}</button>
+            </div>
+        </div>
+        <div *ngIf="isListView" class="row justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="row">
+                    <h3>Employee List</h3>
+                </div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Department</th>
+                            <th>Salary</th>
+                            <th>Manager</th>
+                            <th>DOB</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let emp of employeeList; let sr= index">
+                            <td>{{sr+1}}</td>
+                            <td>{{emp.first_name }} </td>
+                            <td>{{emp.last_name}}</td>
+                            <td>{{emp.department }} </td>
+                            <td>{{emp.salary }} </td>
+                            <td>{{emp.manager}}</td>
+                            <td>{{emp.dob}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-primary" (click)="onEdit(emp)">Edit</button>
+                                <button class="btn btn-sm btn-danger" (click)="onDelete(emp)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div  *ngIf="!isListView" class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Employee Registration Form</h3> 
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <input type="text" [(ngModel)]="employeeObject.first_name" id="firstName" class="form-control form-control-lg" />
+                                        <label class="form-label" for="firstName">First Name</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4">
+
+                                    <div class="form-outline">
+                                        <input type="text" id="lastName"  [(ngModel)]="employeeObject.last_name" class="form-control form-control-lg" />
+                                        <label class="form-label" for="lastName">Last Name</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                    <div class="form-outline datepicker w-100">
+                                        <label class="form-label" for="lastName">Department</label>
+                                        <select  [(ngModel)]="employeeObject.department" class="select form-control-lg">
+                                            <option value="">Choose Department</option>
+                                            <option *ngFor="let dept of departments" [value]="dept.deptName">
+                                                {{dept.deptName}}</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                    <div class="form-outline datepicker w-100">
+                                        <label class="form-label" for="lastName">Manager</label>
+                                        <select  [(ngModel)]="employeeObject.manager_id" class="select form-control-lg">
+                                            <option value="">Choose Manager</option>
+                                            <option *ngFor="let man of managerList" [value]="man.employee_id">
+                                                {{man.first_name}} {{man.last_name}}</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <input  [(ngModel)]="employeeObject.salary" type="salary" id="salary" class="form-control form-control-lg" />
+                                        <label class="form-label" for="salary">Salary</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+
+                                    <div class="form-outline">
+                                        <input  [(ngModel)]="employeeObject.dob" type="dob" id="dob" class="form-control form-control-lg" />
+                                        <label class="form-label" for="phoneNumber">DOB</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-2">
+                                <input class="btn btn-primary btn-lg" (click)="onCreateEmp()" type="button" value="Submit" />
+                            </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

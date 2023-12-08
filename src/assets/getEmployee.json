@@ -1,0 +1,40 @@
+{
+    "data":[
+        {
+            "firstName":"Sachin",
+            "lastName": "Tendulkar",
+            "department": "DEV",
+            "departmentId": "1",
+            "salary":"12000",
+            "manager":"moody",
+            "dob":"1971-04-01"
+        },
+        {
+            "firstName":"Rahul",
+            "lastName": "Dravid",
+            "department": "QA",
+            "departmentId": "2",
+            "salary":"12000",
+            "manager":"moody",
+            "dob":"1971-04-01"
+        },
+        {
+            "firstName":"Mahendra Singh",
+            "lastName": "Dhone",
+            "department": "HR",
+            "departmentId": "3",
+            "salary":"12000",
+            "manager":"moody",
+            "dob":"1971-04-01"
+        },
+        {
+            "firstName":"Rohit",
+            "lastName": "Sharma",
+            "department": "HR",
+            "departmentId": "3",
+            "salary":"12000",
+            "manager":"moody",
+            "dob":"1971-04-01"
+        }
+    ]
+}
