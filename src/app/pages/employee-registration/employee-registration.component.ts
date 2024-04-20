@@ -24,11 +24,39 @@ export class EmployeeRegistrationComponent implements OnInit  {
     "is_manager":"",
     "dob":""
   }
+
+  dummyManager:any = {
+    "employee_id":1,
+    "first_name":"dummy",
+    "last_name": "manager", 
+    "department": "DEV",
+    "salary":25000,
+    "manager_id":"1",
+    "is_manager":true,
+    "dob":"1978-02-27T14:55:55.401+00:00"
+  };
+
   constructor(private service: ApiServiceService,private http:HttpClient) {
     
   }
 
+  InsertDummyData(){
+    console.log(this.dummyManager);
+    this.service.addEmployee(this.dummyManager).subscribe((res:any)=>{
+      console.log(res);
+    });
+
+  }
+
   ngOnInit(): void {
+    this.InsertDummyData();
+    this.loadDepartments();
+    this.loadEmployees();
+    this.loadManagers();
+    
+  }
+
+  ngOnChanges():void {
     this.loadDepartments();
     this.loadEmployees();
     this.loadManagers();
@@ -84,7 +112,12 @@ export class EmployeeRegistrationComponent implements OnInit  {
   }
 
   onDelete(item: any) {
-
+    this.employeeObject = item;
+    console.log(item);
+    this.service.deleteEmployee(this.employeeObject).subscribe((res:any)=>{
+      console.log(res);
+      this.loadEmployees();
+    });
   }
 
 }

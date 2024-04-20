@@ -33,5 +33,9 @@ updateEmployee(employee:any):Observable<any>{
     return this.http.post<any>(`${this.baseUrl}update`,employee);
 }
 
+deleteEmployee(employee:any):Observable<any>{
+  return this.http.post<any>(`${this.baseUrl}delete`,employee);
+}
+
 
 }
